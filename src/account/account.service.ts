@@ -6,6 +6,10 @@ import { ConfigService } from '@nestjs/config';
 export class AccountService {
   constructor(private readonly configService: ConfigService) {}
 
+  helloAccount() {
+    return 'Hello account.';
+  }
+
   firstMessage() {
     // eslint-disable-next-line
     const fetch = require('node-fetch');
