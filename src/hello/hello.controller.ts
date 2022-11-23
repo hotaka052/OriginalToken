@@ -16,9 +16,15 @@ export class HelloController {
     const event = req.body;
     let reply = {};
     if (event.type === 'MESSAGE') {
-      reply = {
-        text: `Hello ${event.user.displayName}`,
-      };
+      if (event.message.slashCommand) {
+        reply = {
+          text: `Command Work`,
+        };
+      } else {
+        reply = {
+          text: `Hello ${event.user.displayName}`,
+        };
+      }
     }
     res.json(reply);
   }
