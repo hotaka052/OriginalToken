@@ -17,7 +17,7 @@ export class HelloController {
     let reply = {};
     if (event.type === 'MESSAGE') {
       reply = {
-        text: `Hello ${event.uuser.displayName}`,
+        text: `Hello ${event.user.displayName}`,
       };
     }
     res.json(reply);
