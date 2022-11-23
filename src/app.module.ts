@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
-// import { AccountModule } from './account/account.module';
+import { ConfigModule } from '@nestjs/config';
+import { AccountModule } from './account/account.module';
 import { HelloModule } from './hello/hello.module';
 
 @Module({
-  imports: [HelloModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env'],
+    }),
+    HelloModule,
+    AccountModule,
+  ],
   controllers: [],
   providers: [],
 })
