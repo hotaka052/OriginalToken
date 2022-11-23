@@ -10,7 +10,7 @@ export class AccountService {
     return 'Hello account.';
   }
 
-  firstMessage() {
+  async firstMessage() {
     // eslint-disable-next-line
     const fetch = require('node-fetch');
     const webhookURL = this.configService.get<string>('WEBHOOK_URL');
@@ -18,12 +18,23 @@ export class AccountService {
     const data = JSON.stringify({
       text: 'Hello world. Webhookが作動しました。',
     });
-    fetch(webhookURL, {
+
+    let resp: any;
+
+    await fetch(webhookURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: data,
-    });
+    })
+      .then((response: any) => {
+        resp = response;
+      })
+      .catch((error: any) => {
+        resp = error;
+      });
+
+    return resp;
   }
 }
