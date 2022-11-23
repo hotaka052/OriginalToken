@@ -18,16 +18,12 @@ export class AccountService {
     const data = JSON.stringify({
       text: 'Hello world. Webhookが作動しました。',
     });
-    let resp: any;
     fetch(webhookURL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: data,
-    }).then((response: any) => {
-      resp = response;
     });
-    return resp;
   }
 }
