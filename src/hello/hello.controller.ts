@@ -17,9 +17,18 @@ export class HelloController {
     let reply = {};
     if (event.type === 'MESSAGE') {
       if (event.message.slashCommand) {
-        reply = {
-          text: `Command Work`,
-        };
+        console.log(event.message.slashCommand);
+        switch (event.message.slashCommand.commandId) {
+          case '1':
+            reply = { text: 'register command work' };
+            break;
+          case '2':
+            reply = { text: 'send command work' };
+            break;
+          case '3':
+            reply = { text: 'info command work' };
+            break;
+        }
       } else {
         reply = {
           text: `Hello ${event.user.displayName}`,
