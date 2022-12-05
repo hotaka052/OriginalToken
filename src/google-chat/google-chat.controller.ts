@@ -10,7 +10,6 @@ export class GoogleChatController {
   async responseMessage(@Req() req: Request, @Res() res: Response) {
     // POSTメソッド以外ははじく
     if (!(req.method === 'POST')) {
-      console.log('not post method.');
       return res.status(400).send('');
     }
 
@@ -88,7 +87,6 @@ export class GoogleChatController {
         },
       };
     }
-    // console.log(reply);
     res.status(status).send(reply);
   }
 }
